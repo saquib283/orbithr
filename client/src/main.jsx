@@ -5,16 +5,17 @@ import './index.css';
 import { ApolloClient, InMemoryCache, ApolloProvider, createHttpLink } from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
 
+// --- STEP 1: Define the RENDER Backend URI ---
+const RENDER_BACKEND_URI = 'https://orbithr.onrender.com/graphql';
+
 // 1. HTTP Link: Connects to your Backend
 const httpLink = createHttpLink({
-  uri: 'http://localhost:4000/graphql',
+  uri: RENDER_BACKEND_URI,
 });
 
-// 2. Auth Link: Injects the token into headers
+// 2. Auth Link: Injects the token into headers (from localStorage)
 const authLink = setContext((_, { headers }) => {
-  // Get the authentication token from local storage if it exists
   const token = localStorage.getItem('orbit_token');
-  // Return the headers to the context so httpLink can read them
   return {
     headers: {
       ...headers,
