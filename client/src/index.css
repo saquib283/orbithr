@@ -1,0 +1,93 @@
+@import "tailwindcss";
+
+/* In Tailwind 4, we define theme extensions here.
+   This replaces the 'theme.extend' block from v3.
+*/
+@theme {
+  /* Define the animations for the "Extraordinary" look */
+  --animate-fade-in-up: fadeInUp 0.5s ease-out forwards;
+  --animate-pulse-slow: pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+
+  /* Keyframes */
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}
+
+/* Since we dropped the 'tailwindcss-animate' plugin for v4 purity,
+   we manually add the utility classes used in the Modal 
+   (animate-in, fade-in, zoom-in) 
+*/
+@layer utilities {
+  .animate-in {
+    animation-duration: 300ms;
+    animation-fill-mode: both;
+    animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .fade-in {
+    animation-name: enter-fade;
+  }
+
+  .zoom-in {
+    --tw-enter-scale: 0.95;
+    animation-name: enter-scale;
+  }
+
+  @keyframes enter-fade {
+    from {
+      opacity: 0;
+    }
+
+    to {
+      opacity: 1;
+    }
+  }
+
+  @keyframes enter-scale {
+    from {
+      transform: scale(var(--tw-enter-scale));
+    }
+
+    to {
+      transform: scale(1);
+    }
+  }
+}
+
+/* Base Styles for the Dark Theme */
+body {
+  @apply bg-[#0f172a] text-white antialiased;
+}
+
+
+
+@layer utilities {
+  .custom-scrollbar::-webkit-scrollbar {
+    height: 8px;
+    /* Height for horizontal scrollbar */
+    width: 8px;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 4px;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 4px;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.4);
+  }
+  }
