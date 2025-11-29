@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { X, Save, Loader2 } from 'lucide-react';
-
 export default function EmployeeFormModal({ isOpen, onClose, onSubmit, initialData, loading }) {
     const [formData, setFormData] = useState({
         name: '',
@@ -12,7 +11,6 @@ export default function EmployeeFormModal({ isOpen, onClose, onSubmit, initialDa
         attendance: 100,
         subjects: ''
     });
-
     useEffect(() => {
         if (initialData) {
             setFormData({
@@ -23,47 +21,34 @@ export default function EmployeeFormModal({ isOpen, onClose, onSubmit, initialDa
             setFormData({ name: '', role: 'EMPLOYEE', department: '', status: 'Active', age: 25, class: '', attendance: 100, subjects: '' });
         }
     }, [initialData, isOpen]);
-
     if (!isOpen) return null;
-
     const handleSubmit = (e) => {
         e.preventDefault();
-
-        // --- CRITICAL FIX: SANITIZATION ---
-        // We create a new object manually to ensure NO extra fields (like __typename) are sent.
         const submitData = {
             name: formData.name,
             role: formData.role,
             department: formData.department,
             status: formData.status,
-            // Convert numbers explicitly
             age: parseInt(formData.age) || 0,
             class: formData.class,
             attendance: parseFloat(formData.attendance) || 0,
-            // Handle array conversion safely
             subjects: typeof formData.subjects === 'string'
                 ? formData.subjects.split(',').map(s => s.trim()).filter(s => s)
                 : []
         };
-
         onSubmit(submitData);
     };
-
     return (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
             <div className="absolute inset-0 bg-black/60 backdrop-blur-sm" onClick={onClose} />
-
             <div className="relative w-full max-w-2xl bg-[#0f172a] border border-white/10 rounded-2xl shadow-2xl overflow-hidden animate-fade-in-up">
-
                 <div className="px-6 py-4 border-b border-white/10 flex justify-between items-center bg-white/5">
                     <h2 className="text-xl font-bold text-white">{initialData ? 'Edit Employee' : 'Add New Employee'}</h2>
                     <button onClick={onClose} className="p-2 bg-white/5 rounded-full text-gray-400 hover:text-white hover:bg-white/10 transition-colors">
                         <X size={20} />
                     </button>
                 </div>
-
                 <form onSubmit={handleSubmit} className="p-8 space-y-6">
-
                     <div>
                         <label className="block text-xs font-bold text-gray-500 uppercase mb-2 tracking-wider">Full Name</label>
                         <input
@@ -74,7 +59,6 @@ export default function EmployeeFormModal({ isOpen, onClose, onSubmit, initialDa
                             onChange={e => setFormData({ ...formData, name: e.target.value })}
                         />
                     </div>
-
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                         <div>
                             <label className="block text-xs font-bold text-gray-500 uppercase mb-2 tracking-wider">Role</label>
@@ -88,7 +72,6 @@ export default function EmployeeFormModal({ isOpen, onClose, onSubmit, initialDa
                                 <option value="ADMIN" className="bg-slate-800">Admin</option>
                             </select>
                         </div>
-
                         <div>
                             <label className="block text-xs font-bold text-gray-500 uppercase mb-2 tracking-wider">Department</label>
                             <input
@@ -98,7 +81,6 @@ export default function EmployeeFormModal({ isOpen, onClose, onSubmit, initialDa
                                 onChange={e => setFormData({ ...formData, department: e.target.value })}
                             />
                         </div>
-
                         <div>
                             <label className="block text-xs font-bold text-gray-500 uppercase mb-2 tracking-wider">Class / Level</label>
                             <input
@@ -108,7 +90,6 @@ export default function EmployeeFormModal({ isOpen, onClose, onSubmit, initialDa
                                 onChange={e => setFormData({ ...formData, class: e.target.value })}
                             />
                         </div>
-
                         <div className="grid grid-cols-2 gap-4">
                             <div>
                                 <label className="block text-xs font-bold text-gray-500 uppercase mb-2 tracking-wider">Age</label>
@@ -135,7 +116,6 @@ export default function EmployeeFormModal({ isOpen, onClose, onSubmit, initialDa
                             </div>
                         </div>
                     </div>
-
                     <div>
                         <label className="block text-xs font-bold text-gray-500 uppercase mb-2 tracking-wider">Subjects (Comma separated)</label>
                         <input
@@ -145,7 +125,6 @@ export default function EmployeeFormModal({ isOpen, onClose, onSubmit, initialDa
                             onChange={e => setFormData({ ...formData, subjects: e.target.value })}
                         />
                     </div>
-
                     <div className="pt-6 flex justify-end gap-4 border-t border-white/5">
                         <button type="button" onClick={onClose} className="px-6 py-3 rounded-xl text-sm font-medium text-gray-400 hover:text-white hover:bg-white/5 transition-all">
                             Cancel

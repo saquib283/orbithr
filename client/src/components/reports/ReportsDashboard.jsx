@@ -1,6 +1,5 @@
 import React from 'react';
 import { FileText, Download, Filter, Calendar, CheckCircle, Clock } from 'lucide-react';
-
 const reportsData = [
     { id: 1, name: 'Monthly Attendance Summary', date: 'Oct 2024', type: 'PDF', size: '2.4 MB', status: 'Ready' },
     { id: 2, name: 'Q3 Performance Review', date: 'Sep 2024', type: 'PDF', size: '1.8 MB', status: 'Ready' },
@@ -8,12 +7,10 @@ const reportsData = [
     { id: 4, name: 'New Hires Onboarding', date: 'Nov 2024', type: 'PDF', size: '3.2 MB', status: 'Processing' },
     { id: 5, name: 'Department Budget Analysis', date: 'Aug 2024', type: 'XLS', size: '1.1 MB', status: 'Ready' },
 ];
-
 export default function ReportsDashboard() {
     return (
         <div className="space-y-6 animate-fade-in-up pb-10">
-
-            {/* Header */}
+            { }
             <div className="flex flex-col md:flex-row justify-between items-end gap-4">
                 <div>
                     <h2 className="text-3xl font-bold text-white">System Reports</h2>
@@ -28,8 +25,7 @@ export default function ReportsDashboard() {
                     </button>
                 </div>
             </div>
-
-            {/* Reports Table */}
+            { }
             <div className="w-full bg-[#1e293b]/60 backdrop-blur-md rounded-2xl border border-white/5 shadow-2xl overflow-hidden">
                 <table className="w-full text-left border-collapse">
                     <thead className="bg-white/5">

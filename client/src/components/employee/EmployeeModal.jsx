@@ -1,28 +1,23 @@
 import React from 'react';
 import { X, Mail, Phone, Activity, MapPin } from 'lucide-react';
-
 export default function EmployeeModal({ emp, onClose }) {
     if (!emp) return null;
-
     return (
         <div className="fixed inset-0 z-[100] flex items-center justify-center p-4">
-            {/* Darkened Backdrop */}
+            { }
             <div
                 className="absolute inset-0 bg-black/60 backdrop-blur-sm transition-opacity"
                 onClick={onClose}
             />
-
-            {/* The Glass Card */}
+            { }
             <div className="relative w-full max-w-3xl bg-[#0f172a] rounded-3xl border border-white/10 shadow-[0_0_50px_rgba(0,0,0,0.5)] overflow-hidden animate-in fade-in zoom-in duration-300">
-
-                {/* Header Background */}
+                { }
                 <div className="h-40 bg-gradient-to-r from-blue-900 to-slate-900 relative overflow-hidden">
                     <div className="absolute inset-0 opacity-30 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-slate-900 via-[#0f172a] to-black"></div>
                     <button onClick={onClose} className="absolute top-6 right-6 p-2 bg-black/20 hover:bg-white/10 rounded-full text-white transition-colors z-10"><X /></button>
                 </div>
-
                 <div className="px-8 pb-8 relative">
-                    {/* Avatar floating */}
+                    { }
                     <div className="relative -mt-16 mb-6 flex items-end justify-between">
                         <div className="p-1.5 bg-[#0f172a] rounded-full inline-block">
                             <img src={emp.avatarUrl} alt={emp.name} className="w-32 h-32 rounded-full border-4 border-[#0f172a] object-cover" />
@@ -33,7 +28,6 @@ export default function EmployeeModal({ emp, onClose }) {
                             </span>
                         </div>
                     </div>
-
                     <div className="mb-8">
                         <h2 className="text-3xl font-bold text-white">{emp.name}</h2>
                         <div className="flex items-center gap-3 mt-2">
@@ -44,10 +38,9 @@ export default function EmployeeModal({ emp, onClose }) {
                             <span className="text-gray-500 text-sm">{emp.class || 'General'}</span>
                         </div>
                     </div>
-
-                    {/* Grid Layout for details */}
+                    { }
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                        {/* Contact Column */}
+                        { }
                         <div className="space-y-6">
                             <h4 className="text-xs font-bold text-gray-500 uppercase tracking-widest">Personal Details</h4>
                             <div className="space-y-4">
@@ -76,8 +69,7 @@ export default function EmployeeModal({ emp, onClose }) {
                                 )}
                             </div>
                         </div>
-
-                        {/* Stats Column */}
+                        { }
                         <div className="space-y-6">
                             <h4 className="text-xs font-bold text-gray-500 uppercase tracking-widest">Performance Metrics</h4>
                             <div className="p-5 bg-gradient-to-br from-white/5 to-white/[0.02] rounded-2xl border border-white/5">
@@ -92,7 +84,6 @@ export default function EmployeeModal({ emp, onClose }) {
                                     <div className="h-full bg-gradient-to-r from-emerald-500 to-cyan-500" style={{ width: `${emp.attendance}%` }} />
                                 </div>
                             </div>
-
                             <div>
                                 <h4 className="text-xs font-bold text-gray-500 uppercase tracking-widest mb-3">Subjects / Skills</h4>
                                 <div className="flex flex-wrap gap-2">
@@ -105,7 +96,6 @@ export default function EmployeeModal({ emp, onClose }) {
                             </div>
                         </div>
                     </div>
-
                 </div>
             </div>
         </div>

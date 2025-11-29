@@ -1,14 +1,10 @@
 import React, { useState } from 'react';
 import { MoreHorizontal, Edit, Trash } from 'lucide-react';
-
 export default function EmployeeGrid({ data, onClick, onEdit, onDelete }) {
-    // Track which row has the menu open (by ID)
     const [openMenuId, setOpenMenuId] = useState(null);
-
     return (
         <div className="w-full bg-[#1e293b]/40 backdrop-blur-md rounded-2xl border border-white/5 shadow-2xl overflow-x-auto custom-scrollbar pb-24">
-            {/* Added pb-24 to make space for the dropdown at the bottom */}
-
+            { }
             <table className="w-full min-w-[1000px] text-left border-collapse">
                 <thead className="bg-white/5 sticky top-0 z-10">
                     <tr>
@@ -39,8 +35,8 @@ export default function EmployeeGrid({ data, onClick, onEdit, onDelete }) {
                             <td className="px-6 py-4 text-sm text-gray-300 whitespace-nowrap">{emp.department}</td>
                             <td className="px-6 py-4">
                                 <span className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium border whitespace-nowrap ${emp.status === 'Active'
-                                        ? 'bg-emerald-500/10 text-emerald-400 border-emerald-500/20 shadow-[0_0_10px_rgba(52,211,153,0.2)]'
-                                        : 'bg-amber-500/10 text-amber-400 border-amber-500/20'
+                                    ? 'bg-emerald-500/10 text-emerald-400 border-emerald-500/20 shadow-[0_0_10px_rgba(52,211,153,0.2)]'
+                                    : 'bg-amber-500/10 text-amber-400 border-amber-500/20'
                                     }`}>
                                     {emp.status}
                                 </span>
@@ -50,8 +46,7 @@ export default function EmployeeGrid({ data, onClick, onEdit, onDelete }) {
                                     <div className="h-full bg-gradient-to-r from-cyan-400 to-blue-500" style={{ width: `${emp.attendance}%` }} />
                                 </div>
                             </td>
-
-                            {/* ACTIONS COLUMN */}
+                            { }
                             <td className="px-6 py-4 text-right relative">
                                 <button
                                     onClick={(e) => {
@@ -62,8 +57,7 @@ export default function EmployeeGrid({ data, onClick, onEdit, onDelete }) {
                                 >
                                     <MoreHorizontal size={20} />
                                 </button>
-
-                                {/* Dropdown Menu */}
+                                { }
                                 {openMenuId === emp.id && (
                                     <div className="absolute right-8 top-8 w-32 bg-[#0f172a] border border-white/10 rounded-xl shadow-xl z-50 overflow-hidden animate-in fade-in zoom-in duration-200">
                                         <button
@@ -93,7 +87,7 @@ export default function EmployeeGrid({ data, onClick, onEdit, onDelete }) {
                     ))}
                 </tbody>
             </table>
-            {/* Click outside listener to close menus could be added here, but simple toggle works for POC */}
+            { }
         </div>
     );
 }

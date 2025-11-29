@@ -4,7 +4,6 @@ import {
     PieChart, Pie, Cell, BarChart, Bar
 } from 'recharts';
 import { Users, Clock, TrendingUp, AlertCircle, Briefcase } from 'lucide-react';
-
 const trendData = [
     { name: 'Jan', score: 85, attendance: 92 },
     { name: 'Feb', score: 88, attendance: 94 },
@@ -13,16 +12,13 @@ const trendData = [
     { name: 'May', score: 93, attendance: 98 },
     { name: 'Jun', score: 95, attendance: 97 },
 ];
-
 const deptData = [
     { name: 'Eng', value: 40 },
     { name: 'Sales', value: 30 },
     { name: 'HR', value: 10 },
     { name: 'Ops', value: 20 },
 ];
-
 const COLORS = ['#06b6d4', '#8b5cf6', '#10b981', '#f59e0b'];
-
 const StatCard = ({ title, value, sub, icon: Icon, color }) => (
     <div className="group relative bg-[#1e293b]/60 backdrop-blur-md border border-white/5 rounded-2xl p-6 overflow-hidden transition-all hover:border-white/10 hover:-translate-y-1">
         <div className={`absolute -right-4 -top-4 p-4 opacity-10 group-hover:opacity-20 transition-opacity ${color} transform scale-150`}>
@@ -40,7 +36,6 @@ const StatCard = ({ title, value, sub, icon: Icon, color }) => (
         </div>
     </div>
 );
-
 const CustomTooltip = ({ active, payload, label }) => {
     if (active && payload && payload.length) {
         return (
@@ -57,11 +52,9 @@ const CustomTooltip = ({ active, payload, label }) => {
     }
     return null;
 };
-
 export default function AnalyticsDashboard() {
     return (
         <div className="space-y-6 animate-fade-in-up pb-10">
-
             <div>
                 <h2 className="text-3xl font-bold text-white">Workforce Insights</h2>
                 <p className="text-gray-400 mt-1">Real-time metrics and performance analysis.</p>
@@ -72,10 +65,7 @@ export default function AnalyticsDashboard() {
                 <StatCard title="Performance" value="8.9" sub="Top 10% in industry" icon={TrendingUp} color="text-purple-400" />
                 <StatCard title="On Leave" value="4" sub="2 returning next week" icon={AlertCircle} color="text-amber-400" />
             </div>
-
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-
-
                 <div className="lg:col-span-2 bg-[#1e293b]/60 backdrop-blur-md border border-white/5 rounded-2xl p-6">
                     <h3 className="text-lg font-bold text-white mb-6">Performance & Attendance</h3>
                     <div className="h-[300px] w-full">
@@ -101,8 +91,6 @@ export default function AnalyticsDashboard() {
                         </ResponsiveContainer>
                     </div>
                 </div>
-
-
                 <div className="bg-[#1e293b]/60 backdrop-blur-md border border-white/5 rounded-2xl p-6 flex flex-col">
                     <h3 className="text-lg font-bold text-white mb-2">Department Split</h3>
                     <div className="flex-1 min-h-[250px] relative">
@@ -128,15 +116,13 @@ export default function AnalyticsDashboard() {
                                 />
                             </PieChart>
                         </ResponsiveContainer>
-
-                        {/* Center Text overlay */}
+                        { }
                         <div className="absolute inset-0 flex flex-col items-center justify-center pointer-events-none">
                             <span className="text-3xl font-bold text-white">4</span>
                             <span className="text-xs text-gray-500 uppercase tracking-widest">Depts</span>
                         </div>
                     </div>
-
-                    {/* Legend */}
+                    { }
                     <div className="grid grid-cols-2 gap-2 mt-4">
                         {deptData.map((d, i) => (
                             <div key={d.name} className="flex items-center gap-2">
@@ -146,7 +132,6 @@ export default function AnalyticsDashboard() {
                         ))}
                     </div>
                 </div>
-
             </div>
         </div>
     );
